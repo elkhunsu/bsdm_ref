@@ -26,7 +26,35 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?= $form->field($model, 'ref') ?>
 
+            <?= $form->field($member, 'no_hp') ?>
+
             <?= $form->field($member, 'ktp') ?>
+
+            <?= $form->field($member, 'tanggal_lahir') ?>
+
+            <?= $form->field($member, 'tempat_lahir') ?>
+
+            <?= $form->field($member, 'jenis_kelamin') ?>
+
+            <?= $form->field($member, 'ibu_kandung') ?>
+
+            <?= $form->field($alamat, 'alamat') ?>
+
+            <?= $form->field($alamat, 'kota') ?>
+
+            <?= $form->field($alamat, 'kecamatan') ?>
+
+            <?= $form->field($alamat, 'kelurahan') ?>
+
+            <?= $form->field($kerja, 'pekerjaan') ?>
+
+            <?= $form->field($kerja, 'no_telp') ?>
+
+            <?= $form->field($kerja, 'lama_bekerja') ?>
+
+            <?= $form->field($kerja, 'alamat_kantor') ?>
+
+            <?= $form->field($kerja, 'kota') ?>
 
 
 

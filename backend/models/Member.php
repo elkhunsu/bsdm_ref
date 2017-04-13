@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "bd_member".
+ * This is the model class for table "{{%bd_member}}".
  *
  * @property string $ID
  * @property integer $ktp
@@ -18,35 +18,35 @@ use Yii;
  *
  * @property BdUser $iD
  */
-class Member extends \yii\db\ActiveRecord
-{
+class Member extends \yii\db\ActiveRecord {
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
-        return 'bd_member';
+    public static function tableName() {
+        return '{{%bd_member}}';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
-            [['ktp', 'no_hp', 'poin_ref'], 'integer'],
-            [['tanggal_lahir'], 'safe'],
-            [['jenis_kelamin'], 'string', 'max' => 7],
-            [['ibu_kandung', 'tempat_lahir'], 'string', 'max' => 45],
-            [['ID'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['ID' => 'ID']],
+                [['ktp'], 'required', 'KTP Tidak boleh kosong'],
+                [['ktp'], 'unique'],
+                [['ktp', 'no_hp', 'poin_ref'], 'integer'],
+                [['tanggal_lahir'], 'safe'],
+                [['jenis_kelamin'], 'string', 'max' => 7],
+                [['ibu_kandung', 'tempat_lahir'], 'string', 'max' => 45],
+                [['ktp'], 'unique'],
+                [['ID'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['ID' => 'ID']],
         ];
     }
 
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'ID' => 'ID',
             'ktp' => 'Ktp',
@@ -62,8 +62,8 @@ class Member extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getID()
-    {
-        return $this->hasOne(BdUser::className(), ['ID' => 'ID']);
+    public function getID() {
+        return $this->hasOne(User::className(), ['ID' => 'ID']);
     }
+
 }

@@ -143,12 +143,13 @@ class SiteController extends Controller {
     public function actionSignup() {
         $model = new SignupForm;
         $member = new \common\models\Member;
-//        $pekerjaan = new backend\models\Pekerjaan;
+        $kerja = new \common\models\Kerja;
+        $alamat = new \common\models\Alamat;
 
         $request = Yii::$app->request;
 
-        if ($model->load($request->post()) && $member->load($request->post())) {
-            if ($user = $model->signup($model, $member)) {
+        if ($model->load($request->post()) && $member->load($request->post()) && $alamat->load($request->post()) && $kerja->load($request->post())) {
+            if ($user = $model->signup($member, $alamat, $kerja)) {
                 if (Yii::$app->getUser()->login($user)) {
                     return $this->goHome();
                 }
@@ -158,6 +159,8 @@ class SiteController extends Controller {
         return $this->render('signup', [
                     'model' => $model,
                     'member' => $member,
+                    'alamat' => $alamat,
+                    'kerja' => $kerja,
         ]);
     }
 

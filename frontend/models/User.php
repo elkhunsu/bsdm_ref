@@ -40,8 +40,6 @@ class User extends \yii\db\ActiveRecord {
                 [['created_at', 'updated_at'], 'safe'],
                 [['ref'], 'required'],
                 [['username', 'password_hash', 'password_reset_token', 'email'], 'string', 'max' => 255],
-                [['username'], 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
-                [['email'], 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
                 [['auth_key'], 'string', 'max' => 32],
                 [['ref'], 'string', 'max' => 8],
         ];

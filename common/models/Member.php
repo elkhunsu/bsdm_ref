@@ -32,8 +32,9 @@ class Member extends \yii\db\ActiveRecord {
      */
     public function rules() {
         return [
+                [['ktp'], 'required'],
                 [['ktp', 'no_hp', 'poin_ref'], 'integer'],
-                ['ktp', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
+                ['ktp', 'unique', 'targetClass' => '\common\models\member', 'message' => 'KTP sudah terdaftar'],
                 [['tanggal_lahir'], 'safe'],
                 [['jenis_kelamin'], 'string', 'max' => 7],
                 [['ibu_kandung', 'tempat_lahir'], 'string', 'max' => 45],
@@ -61,7 +62,7 @@ class Member extends \yii\db\ActiveRecord {
      * @return \yii\db\ActiveQuery
      */
     public function getID() {
-        return $this->hasOne(BdUser::className(), ['ID' => 'ID']);
+        return $this->hasOne(User::className(), ['ID' => 'ID']);
     }
 
 }
